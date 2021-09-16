@@ -167,18 +167,53 @@ Response:
 
 ```json
 [
-  {
-    "supplier": "Angelic Energy",
-    "coal": 0.6,
-    "gas": 3.8,
-    "nuclear": 1.1,
-    "renewable": 94.3,
-    "other": 0.2,
-    "CO2": 20,
-    "nuclear waste": 0.00008,
-    "year": 2019
-  },
-  {
+    {
+        "supplier": "Angelic Energy",
+        "coal": 0.6,
+        "gas": 3.8,
+        "nuclear": 1.1,
+        "renewable": 94.3,
+        "other": 0.2,
+        "CO2": 20,
+        "nuclear waste": 0.00008,
+        "year": 2019,
+        "code": "ange1"
+    },
+    {
+        "supplier": "Avro Energy",
+        "coal": 6.3,
+        "gas": 72,
+        "nuclear": 8.2,
+        "renewable": 8.3,
+        "other": 5.2,
+        "CO2": 377,
+        "nuclear waste": 0.00057,
+        "year": 2020,
+        "code": "avro1"
+    },
+    {
+        "supplier": "Beam Energy",
+        "coal": 0.6,
+        "gas": 3.8,
+        "nuclear": 1.1,
+        "renewable": 94.3,
+        "other": 0.2,
+        "CO2": 20,
+        "nuclear waste": 0.00008,
+        "year": 2019,
+        "code": "beam1"
+    },
+    ...
+]
+```
+
+## `GET /suppliers/fuel-mix/:code`
+
+Get fuel mix for a single supplier using it's code, which you can get from `GET /suppliers`
+
+Response
+```json
+{
     "supplier": "Avro Energy",
     "coal": 6.3,
     "gas": 72,
@@ -187,32 +222,9 @@ Response:
     "other": 5.2,
     "CO2": 377,
     "nuclear waste": 0.00057,
-    "year": 2020
-  },
-  {
-    "supplier": "Beam Energy",
-    "coal": 0.6,
-    "gas": 3.8,
-    "nuclear": 1.1,
-    "renewable": 94.3,
-    "other": 0.2,
-    "CO2": 20,
-    "nuclear waste": 0.00008,
-    "year": 2019
-  },
-  {
-    "supplier": "Boost",
-    "coal": 0,
-    "gas": 48.1,
-    "nuclear": 0,
-    "renewable": 51.9,
-    "other": 0,
-    "CO2": 178,
-    "nuclear waste": 0,
-    "year": 2020
-  },
-  ...
-]
+    "year": 2020,
+    "code": "avro1"
+}
 ```
 
 ## `GET /suppliers/usage/:code/:usage`

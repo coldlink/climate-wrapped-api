@@ -60,7 +60,7 @@ export const getSupplierEnergy = async (supplier: string, usage: string | number
   return result;
 }
 
-export const supplierFuelMixPercentage = [
+const supplierFuelMixPercentage = [
   {
     "supplier": "Angelic Energy",
     "coal": 0.6,
@@ -853,4 +853,19 @@ export const supplierFuelMixPercentage = [
     "nuclear waste": 0.00116,
     "year": 2020
   }
- ]
+]
+ 
+export const getSupplierFuelMixPercentage = async (code?: string) => {
+  const suppliers = await getSuppliers();
+  
+  const supplierFuelMixPercentageWithCode = supplierFuelMixPercentage.map(supplierFuelMix => ({
+    ...supplierFuelMix,
+    code: suppliers.find(supplier => supplier.name === supplierFuelMix.supplier)?.code
+  }))
+  
+  if (code) {
+    return supplierFuelMixPercentageWithCode.find(supplierFuelMix => supplierFuelMix.code === code)
+  }
+  
+  return supplierFuelMixPercentageWithCode;
+}

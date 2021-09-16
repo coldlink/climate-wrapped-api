@@ -3,7 +3,7 @@ import express, { Express } from 'express';
 import morgan from 'morgan';
 import { getEnvironmentVotesMPByPostcode } from './mpVotes';
 import { getCarbonIntensityForPostcode } from './carbonIntensity';
-import { getSupplierEnergy, getSuppliers, supplierFuelMixPercentage } from './supplier';
+import { getSupplierEnergy, getSuppliers, getSupplierFuelMixPercentage } from './supplier';
 
 const router: Express = express();
 
@@ -62,7 +62,14 @@ router.get('/suppliers', async (_, res) => {
 })
 
 router.get('/suppliers/fuel-mix', async (_, res) => {
-  return res.status(200).json(supplierFuelMixPercentage);
+  const fuelMix = await getSupplierFuelMixPercentage()
+  return res.status(200).json(fuelMix);
+})
+
+router.get('/suppliers/fuel-mix/:code', async (req, res) => {
+  const { code } = req.params;
+  const fuelMix = await getSupplierFuelMixPercentage(code)
+  return res.status(200).json(fuelMix);
 })
 
 router.get('/suppliers/usage/:code/:usage', async (req, res) => {
