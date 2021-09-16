@@ -3,6 +3,7 @@ import express, { Express } from 'express';
 import morgan from 'morgan';
 import { getEnvironmentVotesMPByPostcode } from './mpVotes';
 import { getCarbonIntensityForPostcode } from './carbonIntensity';
+import { getSuppliers } from './supplier';
 
 const router: Express = express();
 
@@ -44,6 +45,16 @@ router.get('/carbon-intensity/:postcode', async (req, res) => {
     const { postcode } = req.params;
     const carbonIntensity = await getCarbonIntensityForPostcode(postcode)
     return res.status(200).json(carbonIntensity);
+  } catch (error) {
+    console.error(error);
+    return res.sendStatus(500);
+  }
+})
+
+router.get('/suppliers', async (req, res) => {
+  try {
+    const suppliers = await getSuppliers();
+    return res.status(200).json({ suppliers });
   } catch (error) {
     console.error(error);
     return res.sendStatus(500);

@@ -1,9 +1,5 @@
-import got, { Response } from 'got';
-import { JSDOM } from 'jsdom';
-
-const getUrl = async (url: string) => got(url, { followRedirect: true });
-
-const getDom = (response: Response<string>) => new JSDOM(response.body);
+import { JSDOM } from "jsdom";
+import { getUrl, getDom } from "./util";
 
 const getMPVotesDom = async (url: string) => {
   const response = await getUrl(`${url}/votes`);
