@@ -1,9 +1,9 @@
 import http from 'http';
 import express, { Express } from 'express';
 import morgan from 'morgan';
-import { getEnvironmentVotesMPByPostcode } from './mpVotes';
-import { getCarbonIntensityForPostcode } from './carbonIntensity';
-import { getSupplierEnergy, getSuppliers, getSupplierFuelMixPercentage } from './supplier';
+import { getEnvironmentVotesMPByPostcode } from './mpVotes.js';
+import { getCarbonIntensityForPostcode } from './carbonIntensity.js';
+import { getSupplierEnergy, getSuppliers, getSupplierFuelMixPercentage } from './supplier.js';
 
 const router: Express = express();
 

@@ -1,7 +1,8 @@
 import got, { Response } from 'got';
-import { getUrl, getDom } from "./util";
+import mem from 'mem';
+import { getUrl, getDom } from "./util.js";
 
-export const getSuppliers = async () => {
+export const getSuppliers = mem(async () => {
   const response = await getUrl('https://electricityinfo.org/carbon-calculator/');
   let codes = [];
   const dom = getDom(response)
@@ -18,14 +19,14 @@ export const getSuppliers = async () => {
     }
   }
   return codes;
-}
+});
 
 interface Emissions {
   emissionsKg: number | null;
   nuclearWasteG: number | null;
 }
 
-export const getSupplierEnergy = async (supplier: string, usage: string | number) => {
+export const getSupplierEnergy = mem(async (supplier: string, usage: string | number) => {
   const response = await got("https://electricityinfo.org/carbon-calculator/", {
     "headers": {
       "content-type": "application/x-www-form-urlencoded",
@@ -58,7 +59,9 @@ export const getSupplierEnergy = async (supplier: string, usage: string | number
   }
   
   return result;
-}
+}, {
+  cacheKey: arguments_ => arguments_.join(',')
+})
 
 const supplierFuelMixPercentage = [
   {
@@ -855,7 +858,7 @@ const supplierFuelMixPercentage = [
   }
 ]
  
-export const getSupplierFuelMixPercentage = async (code?: string) => {
+export const getSupplierFuelMixPercentage = mem(async (code?: string) => {
   const suppliers = await getSuppliers();
   
   const supplierFuelMixPercentageWithCode = supplierFuelMixPercentage.map(supplierFuelMix => ({
@@ -868,4 +871,4 @@ export const getSupplierFuelMixPercentage = async (code?: string) => {
   }
   
   return supplierFuelMixPercentageWithCode;
-}
+});

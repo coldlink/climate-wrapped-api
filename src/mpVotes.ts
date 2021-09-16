@@ -1,18 +1,19 @@
 import { JSDOM } from "jsdom";
-import { getUrl, getDom } from "./util";
+import mem from "mem";
+import { getUrl, getDom } from "./util.js";
 
-const getMPVotesDom = async (url: string) => {
+const getMPVotesDom = mem(async (url: string) => {
   const response = await getUrl(`${url}/votes`);
   return getDom(response);
-}
+});
 
-const cleanTextEnvironmentVote = (textContent: string | null) => {
+const cleanTextEnvironmentVote = mem((textContent: string | null) => {
   const split = textContent?.split('\n').map(str => str.replace('Show votes', '').trim()).filter(Boolean);
   if (split)
     return [split[0] + '.', split[1]];
   else
     return ['', ''];
-}
+});
 
 const getEnvironmentVotes = (dom: JSDOM) => {
   const votes: string[][] = [];
@@ -32,8 +33,8 @@ const getEnvironmentVotes = (dom: JSDOM) => {
   };
 }
 
-export const getEnvironmentVotesMPByPostcode = async (postcode: string) => {
+export const getEnvironmentVotesMPByPostcode = mem( async (postcode: string) => {
   const mpUrlResponse = await getUrl(`https://www.theyworkforyou.com/postcode/?pc=${postcode}`)
   const mpVotesDom = await getMPVotesDom(mpUrlResponse.url);
   return getEnvironmentVotes(mpVotesDom)
-}
+});
