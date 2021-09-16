@@ -1,11 +1,12 @@
 {
   "name": "climate-wrapped-api",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "rm -rf build/ && tsc"
+    "build": "rm -rf build/ && tsc",
+    "start": "node build/index.js"
   },
   "keywords": [],
   "author": "",
