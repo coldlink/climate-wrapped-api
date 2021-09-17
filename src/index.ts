@@ -83,6 +83,13 @@ router.get('/suppliers/usage/:code/:usage', async (req, res) => {
   }
 })
 
+router.get('/', (_, res) => {
+  return res.status(200).type('html').send(`
+    <p>Guardian Hack Day September 2021</p>
+    <a href="https://github.com/coldlink/climate-wrapped-api">Climate Wrapped API Documentation</a>
+  `)
+})
+
 /** Error handling */
 router.use((_, res,) => {
     const error = new Error('Not found');
