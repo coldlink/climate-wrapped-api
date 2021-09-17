@@ -8,11 +8,11 @@ const getMPVotesDom = mem(async (url: string) => {
 });
 
 const cleanTextEnvironmentVote = mem((textContent: string | null) => {
-  const split = textContent?.split('\n').map(str => str.replace('Show votes', '').trim()).filter(Boolean);
+  const split = textContent?.split('\n').flatMap(str => str.replace('Show votes', '').split('Most current').map(s => s.trim())).filter(Boolean);
   if (split)
-    return [split[0] + '.', split[1]];
+    return [split[0] + '.', split[1], split[2]];
   else
-    return ['', ''];
+    return ['', '', ''];
 });
 
 const getEnvironmentVotes = (dom: JSDOM) => {
