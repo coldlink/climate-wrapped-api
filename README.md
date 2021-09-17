@@ -23,46 +23,40 @@ Response:
 {
     "title": "How Emily Thornberry voted on Environmental Issues",
     "votes": [
-        [
-            "Generally voted for measures to prevent climate change.",
-            "17 votes for, 6 votes against, 10 absences, between 2008–2020.",
-            null
-        ],
-        [
-            "Voted a mixture of for and against lower taxes on fuel for motor vehicles.",
-            "6 votes for, 4 votes against, 6 absences, between 2010–2013.",
-            "Labour MPs generally voted against (21 votes, between 2010–2013)."
-        ],
-        [
-            "Consistently voted against culling badgers to tackle bovine tuberculosis.",
-            "0 votes for, 4 votes against, between 2013–2014.",
-            null
-        ],
-        [
-            "Consistently voted against selling England’s state owned forests.",
-            "0 votes for, 2 votes against, in 2011.",
-            null
-        ],
-        [
-            "Voted for new high speed rail infrastructure.",
-            "1 vote for, 0 votes against, 7 absences, between 2014–2019.",
-            "Labour MPs generally voted for (9 votes, between 2013–2019)."
-        ],
-        [
-            "Generally voted for financial incentives for low carbon emission electricity generation methods.",
-            "4 votes for, 1 vote against, 1 absence, between 2011–2018.",
-            null
-        ],
-        [
-            "Generally voted against higher taxes on plane tickets.",
-            "0 votes for, 6 votes against, 5 absences, between 2013–2017.",
-            null
-        ],
-        [
-            "Generally voted against greater regulation of hydraulic fracturing (fracking) to extract shale gas.",
-            "1 vote for, 2 votes against, 1 absence, in 2015.",
-            null
-        ]
+        {
+            "general": "Voted for new high speed rail infrastructure.",
+            "votes": "1 vote for, 0 votes against, 7 absences, between 2014–2019.",
+            "party": "Labour MPs generally voted for (9 votes, between 2013–2019)."
+        },
+        {
+            "general": "Generally voted for financial incentives for low carbon emission electricity generation methods.",
+            "votes": "4 votes for, 1 vote against, 1 absence, between 2011–2018."
+        },
+        {
+            "general": "Generally voted against greater regulation of hydraulic fracturing (fracking) to extract shale gas.",
+            "votes": "1 vote for, 2 votes against, 1 absence, in 2015."
+        },
+        {
+            "general": "Consistently voted against selling England’s state owned forests.",
+            "votes": "0 votes for, 2 votes against, in 2011."
+        },
+        {
+            "general": "Consistently voted against culling badgers to tackle bovine tuberculosis.",
+            "votes": "0 votes for, 4 votes against, between 2013–2014."
+        },
+        {
+            "general": "Generally voted for measures to prevent climate change.",
+            "votes": "17 votes for, 6 votes against, 10 absences, between 2008–2020."
+        },
+        {
+            "general": "Generally voted against higher taxes on plane tickets.",
+            "votes": "0 votes for, 6 votes against, 5 absences, between 2013–2017."
+        },
+        {
+            "general": "Voted a mixture of for and against lower taxes on fuel for motor vehicles.",
+            "votes": "6 votes for, 4 votes against, 6 absences, between 2010–2013.",
+            "party": "Labour MPs generally voted against (21 votes, between 2010–2013)."
+        }
     ]
 }
 ```

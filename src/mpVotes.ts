@@ -7,16 +7,30 @@ const getMPVotesDom = mem(async (url: string) => {
   return getDom(response);
 });
 
-const cleanTextEnvironmentVote = mem((textContent: string | null) => {
+interface EnvironmentVote {
+  general: string | null,
+  votes: string | null,
+  party: string | null
+}
+
+const cleanTextEnvironmentVote = mem((textContent: string | null): EnvironmentVote => {
   const split = textContent?.split('\n').flatMap(str => str.replace('Show votes', '').split('Most current').map(s => s.trim())).filter(Boolean);
   if (split)
-    return [split[0] + '.', split[1], split[2]];
+    return {
+      general: split[0] + '.',
+      votes: split[1],
+      party: split[2],
+    }
   else
-    return ['', '', ''];
+    return {
+      general: null,
+      votes: null,
+      party: null,
+    };
 });
 
 const getEnvironmentVotes = (dom: JSDOM) => {
-  const votes: string[][] = [];
+  const votes: EnvironmentVote[] = [];
   let title = '';
   const environmentElement = dom.window.document.getElementById('environment');
   const parentElement = environmentElement?.parentElement;
